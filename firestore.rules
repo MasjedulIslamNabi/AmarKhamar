@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidUserProfile(data) {
+      return data.userId is string && data.userId.size() <= 128 && data.userId == request.auth.uid
+        && (!('farmName' in data) || (data.farmName is string && data.farmName.size() <= 100))
+        && (!('email' in data) || (data.email is string && data.email.size() <= 256))
+        && (!('preferredLanguage' in data) || (data.preferredLanguage in ['en', 'bn']));
+    }
+
+    function isValidFarmData(data) {
+      return data.userId is string && data.userId == request.auth.uid
+        && data.cattle is list && data.cattle.size() <= 5000
+        && data.feed is list && data.feed.size() <= 10000
+        && data.employees is list && data.employees.size() <= 1000
+        && data.sales is list && data.sales.size() <= 5000
+        && (!('farmName' in data) || (data.farmName is string && data.farmName.size() <= 100));
+    }
+
+    // User profile documents
+    match /users/{userId} {
+      allow get: if isOwner(userId) && isValidId(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && isValidId(userId) && isValidUserProfile(incoming());
+      allow update: if isOwner(userId) && isValidId(userId) && isValidUserProfile(incoming())
+        && incoming().userId == existing().userId;
+      allow delete: if false;
+
+      // FarmData subcollection
+      match /farmData/{docId} {
+        allow get: if isOwner(userId) && isValidId(docId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(docId) && isValidFarmData(incoming());
+        allow update: if isOwner(userId) && isValidId(docId) && isValidFarmData(incoming())
+          && incoming().userId == existing().userId;
+        allow delete: if isOwner(userId) && isValidId(docId);
+      }
+    }
+  }
+}

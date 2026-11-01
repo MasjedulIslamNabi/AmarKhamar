@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Amar Khamar (আমার খামার) - Cattle &amp; Dairy Farm Management</title>
+    <meta name="description" content="Modern Agro-Tech Cattle &amp; Dairy Farm Management PWA with bilingual localization (English &amp; Bengali), offline support, herd registry, health &amp; vaccination tracking, feed inventory, payroll, and automated profit &amp; loss analytics." />
+    
+    <meta property="og:title" content="Amar Khamar (আমার খামার) - Cattle &amp; Dairy Farm Management" />
+    <meta property="og:description" content="Modern Agro-Tech Cattle &amp; Dairy Farm Management PWA with bilingual localization (English &amp; Bengali), offline support, herd registry, health &amp; vaccination tracking, feed inventory, payroll, and automated profit &amp; loss analytics." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Anti-Dark Reader & Forced Light Mode Locking -->
+    <meta name="darkreader-lock" content="darkreader-lock" />
+    <meta name="darkreader" content="NO-DARK-MODE" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Amar Khamar" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+
+    <style>
+      :root, html, body, #root {
+        color-scheme: only light !important;
+        forced-color-adjust: none !important;
+        -webkit-font-smoothing: antialiased;
+        background-color: #F8FAFC !important;
+        background: #F8FAFC !important;
+        color: #0f172a !important;
+      }
+      /* Prevent Dark Reader extension from inverting soft slate backgrounds */
+      html[data-darkreader-mode], html[data-darkreader-scheme] {
+        background-color: #F8FAFC !important;
+        background: #F8FAFC !important;
+        filter: none !important;
+      }
+      body[data-darkreader-inline-bgcolor], #root[data-darkreader-inline-bgcolor] {
+        background-color: #F8FAFC !important;
+        background: #F8FAFC !important;
+      }
+    </style>
+
+    <!-- Google Fonts: Plus Jakarta Sans (English) and Hind Siliguri & Noto Sans Bengali (Bengali) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-white text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

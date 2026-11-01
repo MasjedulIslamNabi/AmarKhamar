@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile containing basic metadata and settings",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique Firebase Auth UID of the user",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "The user email address",
+          "maxLength": 256
+        },
+        "farmName": {
+          "type": "string",
+          "description": "Custom name of the farm",
+          "maxLength": 100
+        },
+        "preferredLanguage": {
+          "type": "string",
+          "enum": ["en", "bn"],
+          "description": "Preferred UI localization"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the last profile update"
+        }
+      },
+      "required": ["userId"]
+    },
+    "FarmData": {
+      "title": "FarmData",
+      "description": "Full synchronized cattle, feed, payroll, and sales data for the user farm",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner user UID",
+          "maxLength": 128
+        },
+        "farmName": {
+          "type": "string",
+          "description": "Name of the farm",
+          "maxLength": 100
+        },
+        "cattle": {
+          "type": "array",
+          "description": "List of active and historic cattle records"
+        },
+        "feed": {
+          "type": "array",
+          "description": "List of feed purchase entries"
+        },
+        "employees": {
+          "type": "array",
+          "description": "List of farm staff and payroll payments"
+        },
+        "sales": {
+          "type": "array",
+          "description": "List of sold cattle and financial returns"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the latest mutation"
+        }
+      },
+      "required": ["userId", "cattle", "feed", "employees", "sales"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "User profile document storing basic preferences and account settings"
+    },
+    "/users/{userId}/farmData/{docId}": {
+      "schema": {
+        "$ref": "#/entities/FarmData"
+      },
+      "description": "Current active farm dataset for the user containing cattle, feed, employees, and sales ledger"
+    }
+  }
+}

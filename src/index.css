@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: only light !important;
+    forced-color-adjust: none !important;
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans Bengali', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --color-farm-bg: #F8FAFC;
+    --color-farm-card: #FFFFFF;
+    --color-emerald-primary: #059669;
+    --color-emerald-dark: #064E3B;
+  }
+
+  html, body, #root {
+    color-scheme: only light !important;
+    forced-color-adjust: none !important;
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color-scheme: only light !important;
+    forced-color-adjust: none !important;
+    font-family: var(--font-sans);
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    color: #0F172A;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* Enhanced Bengali Typography Readability with generous breathing room */
+  [lang="bn"], .lang-bn {
+    font-family: 'Noto Sans Bengali', 'Hind Siliguri', var(--font-sans);
+    line-height: 1.85 !important;
+    letter-spacing: 0.025em !important;
+  }
+
+  .lang-bn p, .lang-bn span, .lang-bn h1, .lang-bn h2, .lang-bn h3, .lang-bn button, .lang-bn table {
+    line-height: 1.85 !important;
+  }
+
+  /* Custom Clean Green Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F1FBF5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #A7F3D0;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+  }
+}
+
+/* ==========================================================================
+   HIGH-BUDGET SAAS MOTION & ANIMATION SUITE
+   ========================================================================== */
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scaleInModal {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseEmeraldSoft {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(5, 150, 105, 0);
+  }
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation utilities */
+.anim-view {
+  animation: fadeSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-modal-backdrop {
+  animation: backdropFade 0.22s ease-out forwards;
+}
+
+.anim-modal-card {
+  animation: scaleInModal 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-live-pulse {
+  animation: livePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Micro-interaction: High-budget card lift & elevation */
+.card-lift {
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -10px rgba(5, 150, 105, 0.15), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+/* Micro-interaction: Button tap feedback */
+.btn-interactive {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-interactive:active {
+  transform: scale(0.965);
+}
+
+/* Table row interactive transition */
+.table-row-hover {
+  transition: background-color 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.table-row-hover:hover {
+  background-color: rgba(236, 253, 245, 0.6);
+}
+
+/* Stagger animations for lists and KPI cards */
+.stagger-1 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.04s forwards; opacity: 0; }
+.stagger-2 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards; opacity: 0; }
+.stagger-3 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards; opacity: 0; }
+.stagger-4 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.16s forwards; opacity: 0; }
+.stagger-5 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.20s forwards; opacity: 0; }
+.stagger-6 { animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards; opacity: 0; }
+
+/* ==========================================================================
+   DEDICATED CHART & PIE CHART ENTRANCE ANIMATIONS
+   ========================================================================== */
+
+@keyframes chartPathDraw {
+  from {
+    stroke-dashoffset: 2000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes chartAreaReveal {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes chartDotPop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  65% {
+    transform: scale(1.35);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pieRadialEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-40deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes pieCenterPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pieSliceSweep {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.anim-chart-line {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: chartPathDraw 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.anim-chart-area {
+  animation: chartAreaReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  opacity: 0;
+  transform-origin: bottom;
+}
+
+.anim-chart-dot {
+  animation: chartDotPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-pie-container {
+  animation: pieRadialEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center;
+}
+
+.anim-pie-slice {
+  animation: pieSliceSweep 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.anim-pie-center {
+  animation: pieCenterPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  opacity: 0;
+}

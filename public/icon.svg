@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="farmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#065f46" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#farmGrad)" />
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#10b981" stroke-width="6" stroke-dasharray="8 8" opacity="0.4" />
+  
+  <!-- Horns & Head of Bull / Agro-Tech Motif -->
+  <path d="M140 180 C130 110 190 90 220 140 C235 165 245 190 256 220 C267 190 277 165 292 140 C322 90 382 110 372 180 C360 250 330 330 256 360 C182 330 152 250 140 180 Z" fill="#ffffff" />
+  
+  <!-- Inner Agro-Tech Sprout (Green) -->
+  <path d="M256 340 C256 270 210 220 210 220 C240 220 256 260 256 340 Z" fill="#059669" />
+  <path d="M256 340 C256 270 302 220 302 220 C272 220 256 260 256 340 Z" fill="#10b981" />
+  
+  <!-- Golden Ears / Crown -->
+  <path d="M170 190 C120 200 110 230 140 250 C160 240 170 215 170 190 Z" fill="url(#goldGrad)" />
+  <path d="M342 190 C392 200 402 230 372 250 C352 240 342 215 342 190 Z" fill="url(#goldGrad)" />
+  
+  <!-- Star / Quality Dot -->
+  <circle cx="256" cy="180" r="12" fill="url(#goldGrad)" />
+  
+  <!-- Bottom Baseline Grass Motif -->
+  <path d="M190 400 L256 380 L322 400 L256 420 Z" fill="#34d399" opacity="0.8" />
+</svg>

@@ -1,0 +1,8 @@
+{
+  "name": "Amar Khamar (আমার খামার) - Cattle & Dairy Farm Management",
+  "description": "Modern Agro-Tech Cattle & Dairy Farm Management PWA with bilingual localization (English & Bengali), offline support, herd registry, health & vaccination tracking, feed inventory, payroll, and automated profit & loss analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
